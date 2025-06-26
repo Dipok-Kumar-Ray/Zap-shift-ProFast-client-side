@@ -1,13 +1,12 @@
-import React from 'react';
 import Marquee from 'react-fast-marquee';
-
 // import your logos
-import amazon from '../../../src/assets/brands/amazon.png';
+import amazon from '../../assets/brands/amazon.png';
 import casio from '../../../src/assets/brands/casio.png';
 import moonstar from '../../../src/assets/brands/moonstar.png';
 import  randstad from '../../../src/assets/brands/randstad.png';
 import start from '../../../src/assets/brands/start.png';
 import people from '../../../src/assets/brands/start-people 1.png'
+
 
 const logos = [amazon, casio, moonstar, start, randstad, people];
 
