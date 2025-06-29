@@ -1,14 +1,36 @@
-import React from "react";
-import { Link, NavLink } from "react-router";
+import React, { useContext } from "react";
+import { NavLink } from "react-router";
 import ProFastLogo from "../ProFastLogo/ProFastLogo";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Navbar = () => {
-    const navItems = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/sendParcel">Send A  Parcel</NavLink></li>
-        <li><NavLink to="/coverage">Coverage</NavLink></li>
-        <li><NavLink to="/about">About Us</NavLink></li>
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  const navItems = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/sendParcel">Send A Parcel</NavLink>
+      </li>
+      <li>
+        <NavLink to="/coverage">Coverage</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">About Us</NavLink>
+      </li>
     </>
+  );
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -34,22 +56,31 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-      {navItems}
+            {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">
-            <ProFastLogo/>
-        </a>
+        <button className="btn btn-ghost text-xl">
+          <ProFastLogo />
+        </button>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-      <Link to='/login'>
-              <button className="btn btn-primary text-black">Login</button>
-</Link>
+        {user ? (
+          <button onClick={handleSignOut} className="btn ">
+            Sign Out
+          </button>
+        ) : (
+          <>
+            <NavLink className="btn" to="register">
+              Register
+            </NavLink>
+            <NavLink className="btn" to="login">
+              Login
+            </NavLink>
+          </>
+        )}
       </div>
     </div>
   );
