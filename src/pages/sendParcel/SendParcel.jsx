@@ -93,12 +93,13 @@ const SendParcel = () => {
                 const parcelData = {
                     ...data,
                     cost: totalCost,
-                    created_by: user.email,
+                    created_by: user?.email,
                     payment_status: 'unpaid',
                     delivery_status: 'not_collected',
                     creation_date: new Date().toISOString(),
                     tracking_id: generateTrackingID(),
                 };
+                console.log(user);
 
                 console.log("Ready for payment:", parcelData);
                 
