@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
 import { NavLink } from "react-router";
 import ProFastLogo from "../ProFastLogo/ProFastLogo";
-import { AuthContext } from "../../contexts/AuthContext";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
-
+const {user, logOut} = useAuth();
   const handleSignOut = () => {
     logOut()
       .then((result) => {
@@ -27,7 +25,11 @@ const Navbar = () => {
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
       {
-        
+        user && <>
+        <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+      </li>
+        </>
       }
       <li>
         <NavLink to="/about">About Us</NavLink>
