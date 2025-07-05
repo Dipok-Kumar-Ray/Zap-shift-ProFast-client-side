@@ -3,11 +3,14 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const MyParcels = () => {
   // 🔹 Step 1: সব hooks component-এর উপরে রাখতে হবে
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
+
 
   // 🔹 Step 2: useQuery must be at top-level, use `enabled` to guard
   const { data: parcels = [], refetch } = useQuery({
@@ -34,6 +37,7 @@ const MyParcels = () => {
 
   const handlePay = (id) => {
     console.log("Proceed to payment for", id);
+    navigate(`/dashboard/payment/${id}`)
     // Implement your payment logic
   };
 
