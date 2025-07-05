@@ -74,7 +74,7 @@ const {user, logOut} = useAuth();
       <div className="navbar-end">
         {user ? (
           <button onClick={handleSignOut} className="btn ">
-            Sign Out
+            Log Out
           </button>
         ) : (
           <>
