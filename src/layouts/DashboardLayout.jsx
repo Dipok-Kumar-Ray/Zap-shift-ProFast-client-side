@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 import ProFastLogo from "../shared/ProFastLogo/ProFastLogo";
+import { FaHome, FaBoxOpen, FaHistory } from 'react-icons/fa';
+import { MdOutlineManageAccounts } from 'react-icons/md';
 
 const DashboardLayout = () => {
   return (
@@ -44,12 +46,28 @@ const DashboardLayout = () => {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
           <ProFastLogo></ProFastLogo>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/myParcels">My Parcels</NavLink>
-          </li>
+         <ul className="space-y-4 p-4 text-lg">
+      <li>
+        <NavLink to="/" className="flex items-center gap-2">
+          <FaHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/myParcels" className="flex items-center gap-2">
+          <FaBoxOpen /> My Parcels
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/paymentHistory" className="flex items-center gap-2">
+          <FaHistory /> Payment History
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/profile" className="flex items-center gap-2">
+          <MdOutlineManageAccounts /> Update Profile
+        </NavLink>
+      </li>
+    </ul>
         </ul>
       </div>
     </div>
