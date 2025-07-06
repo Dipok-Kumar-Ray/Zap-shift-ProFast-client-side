@@ -25,7 +25,7 @@ const PaymentForm = () => {
   });
 
   if (isPending) {
-    return "...loading";
+    return <span className="loading loading-bars loading-lg"></span>
   }
 
   console.log(parcelInfo);
