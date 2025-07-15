@@ -1,7 +1,15 @@
 import { NavLink, Outlet } from "react-router";
 import ProFastLogo from "../shared/ProFastLogo/ProFastLogo";
-import { FaHome, FaBoxOpen, FaHistory } from 'react-icons/fa';
-import { MdOutlineManageAccounts } from 'react-icons/md';
+
+import {
+  FaHome,
+  FaBoxOpen,
+  FaMoneyCheckAlt,
+  FaUserEdit,
+  FaSearchLocation,
+  FaUserCheck,
+  FaUserClock,
+} from "react-icons/fa";
 
 const DashboardLayout = () => {
   return (
@@ -34,7 +42,7 @@ const DashboardLayout = () => {
           <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
         </div>
         {/* Page content here */}
-        <Outlet />
+        <Outlet></Outlet>
         {/* Page content here */}
       </div>
       <div className="drawer-side">
@@ -46,28 +54,50 @@ const DashboardLayout = () => {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
           <ProFastLogo></ProFastLogo>
-         <ul className="space-y-4 p-4 text-lg">
-      <li>
-        <NavLink to="/" className="flex items-center gap-2">
-          <FaHome /> Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/myParcels" className="flex items-center gap-2">
-          <FaBoxOpen /> My Parcels
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/paymentHistory" className="flex items-center gap-2">
-          <FaHistory /> Payment History
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/profile" className="flex items-center gap-2">
-          <MdOutlineManageAccounts /> Update Profile
-        </NavLink>
-      </li>
-    </ul>
+          <li>
+            <NavLink to="/dashboard">
+              <FaHome className="inline-block mr-2" />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/myParcels">
+              <FaBoxOpen className="inline-block mr-2" />
+              My Parcels
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/paymentHistory">
+              <FaMoneyCheckAlt className="inline-block mr-2" />
+              Payment History
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/track">
+              <FaSearchLocation className="inline-block mr-2" />
+              Track a Package
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/profile">
+              <FaUserEdit className="inline-block mr-2" />
+              Update Profile
+            </NavLink>
+          </li>
+
+          {/* riders link */}
+          <li>
+            <NavLink to="/dashboard/active-riders">
+              <FaUserCheck className="inline-block mr-2" />
+              Active Riders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/pending-riders">
+              <FaUserClock className="inline-block mr-2" />
+              Pending Riders
+            </NavLink>
+          </li>
         </ul>
       </div>
     </div>
